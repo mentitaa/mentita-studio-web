@@ -21,14 +21,27 @@ function HackerText() {
   );
 
   useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const interval = isMobile ? 120 : 80;
+
     const id = setInterval(() => {
       setLines(Array.from({ length: ROWS }, randomLine));
-    }, 45);
+    }, interval);
     return () => clearInterval(id);
   }, []);
 
   return (
-    <div style={{ padding: 20, fontFamily: "monospace", fontSize: 11, lineHeight: 1.7 }}>
+    <div
+      style={{
+        padding: 20,
+        fontFamily: "monospace",
+        fontSize: 11,
+        lineHeight: 1.7,
+        position: "relative",
+        overflow: "hidden",
+        willChange: "contents",
+      }}
+    >
       {lines.map((line, i) => (
         <div key={i} style={{ color: "#00ff41", letterSpacing: 1 }}>
           {line}
