@@ -19,8 +19,13 @@ export default function Home() {
         }}
       />
 
-      {/* Terminal + contact button */}
-      <div style={{ position: "relative", zIndex: 10 }}>
+      {/* Logo + terminal + contact button */}
+      <div style={{ position: "relative", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <img
+          src="/logo.svg"
+          alt="Mentita Studio"
+          style={{ width: 180, marginBottom: 24 }}
+        />
         <TerminalScene />
       </div>
 
