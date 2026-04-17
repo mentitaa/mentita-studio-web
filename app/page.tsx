@@ -15,32 +15,18 @@ export default function Home() {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          objectPosition: "center",
           zIndex: 0,
         }}
       />
 
       {/* Logo + terminal + contact button */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 10,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "100%",
-          maxWidth: 480,
-        }}
-      >
+      <div style={{ position: "relative", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <img
           src="/logo.svg"
           alt="Mentita Studio"
-          className="w-[120px] md:w-[180px]"
-          style={{ marginBottom: 24 }}
+          style={{ width: 180, marginBottom: 24 }}
         />
-        <div className="w-[90%] md:w-full">
-          <TerminalScene />
-        </div>
+        <TerminalScene />
       </div>
 
       {/* Footer */}
