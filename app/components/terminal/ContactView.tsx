@@ -223,10 +223,10 @@ function SuccessPopup({ onClose }: { onClose: () => void }) {
               background: "#28c840", flexShrink: 0, display: "inline-block",
             }}
           />
-          <span style={{ color: "#28c840", fontSize: 12 }}>mensaje enviado</span>
+          <span style={{ color: "#28c840", fontSize: 12 }}>Mensaje enviado</span>
         </div>
         <p style={{ color: "#e0e0e0", fontSize: 13, margin: "0 0 20px", lineHeight: 1.6 }}>
-          información guardada. te contactaré lo más pronto posible.
+          Información guardada. Te contactaré lo más pronto posible.
         </p>
         <button
           onClick={onClose}
@@ -241,7 +241,7 @@ function SuccessPopup({ onClose }: { onClose: () => void }) {
             cursor: "pointer",
           }}
         >
-          cerrar
+          Cerrar
         </button>
       </div>
     </motion.div>
@@ -320,7 +320,7 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
           display: "block",
         }}
       >
-        ← volver
+        ← Volver
       </button>
 
       {/* Header */}
@@ -382,7 +382,7 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
             transition: "opacity 0.2s",
           }}
         >
-          {loading ? "enviando..." : "hablemos"}
+          {loading ? "Enviando..." : "Hablemos"}
         </button>
       </form>
     </div>
