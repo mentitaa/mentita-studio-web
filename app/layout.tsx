@@ -29,6 +29,14 @@ export const metadata: Metadata = {
     description: "Vibe coding studio. Proyectos web y SaaS hechos con Claude Code.",
   },
   metadataBase: new URL("https://mentitastudio.vercel.app"),
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -41,11 +49,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-      </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+<body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
