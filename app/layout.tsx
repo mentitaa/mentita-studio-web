@@ -14,7 +14,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Mentita Studio",
-  description: "Mentita Studio — creative digital studio",
+  description: "Vibe coding studio. Proyectos web y SaaS hechos con Claude Code.",
+  openGraph: {
+    title: "Mentita Studio",
+    description: "Vibe coding studio. Proyectos web y SaaS hechos con Claude Code.",
+    url: "https://mentitastudio.vercel.app",
+    siteName: "Mentita Studio",
+    locale: "es_PE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Mentita Studio",
+    description: "Vibe coding studio. Proyectos web y SaaS hechos con Claude Code.",
+  },
+  metadataBase: new URL("https://mentitastudio.vercel.app"),
 };
 
 export default function RootLayout({
