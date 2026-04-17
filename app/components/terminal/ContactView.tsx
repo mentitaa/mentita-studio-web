@@ -153,16 +153,25 @@ function CountrySelector({
 
 // ─── Field with hover label ───────────────────────────────────────────────────
 
+const fieldErrorStyle: React.CSSProperties = {
+  color: "#ff8c57",
+  fontSize: 11,
+  fontFamily: "monospace",
+  marginTop: 4,
+};
+
 function Field({
   label,
   type = "text",
   value,
   onChange,
+  error,
 }: {
   label: string;
   type?: string;
   value: string;
   onChange: (v: string) => void;
+  error?: string;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -188,9 +197,11 @@ function Field({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        style={inputStyle}
+        style={{ ...inputStyle, borderBottomColor: error ? "#ff8c57" : "#333" }}
         autoComplete="off"
+        required
       />
+      {error && <div style={fieldErrorStyle}>{error}</div>}
     </div>
   );
 }
@@ -266,14 +277,26 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
   const [email,    setEmail]    = useState("");
   const [telefono, setTelefono] = useState("");
   const [pais,     setPais]     = useState("PE");
-  const [loading,  setLoading]  = useState(false);
-  const [success,  setSuccess]  = useState(false);
-  const [apiError, setApiError] = useState<string | null>(null);
+  const [loading,      setLoading]      = useState(false);
+  const [success,      setSuccess]      = useState(false);
+  const [apiError,     setApiError]     = useState<string | null>(null);
+  const [fieldErrors,  setFieldErrors]  = useState({ nombre: "", email: "", telefono: "" });
 
   const selectedCountry = COUNTRIES.find((c) => c.code === pais)!;
 
+  const validate = () => {
+    const errors = {
+      nombre:   nombre.trim()   === "" ? "Este campo es obligatorio" : "",
+      email:    email.trim()    === "" ? "Este campo es obligatorio" : "",
+      telefono: telefono.trim() === "" ? "Este campo es obligatorio" : "",
+    };
+    setFieldErrors(errors);
+    return Object.values(errors).every((e) => e === "");
+  };
+
   const doSubmit = async () => {
     console.log("botón hablemos clickeado");
+    if (!validate()) return;
     setApiError(null);
     setLoading(true);
     try {
@@ -356,16 +379,28 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
 
       {/* Form */}
       <form onSubmit={handleSubmit}>
-        <Field label="nombre"    value={nombre}   onChange={setNombre}   />
-        <Field label="email"     type="email"      value={email}    onChange={setEmail}    />
+        <Field
+          label="nombre"
+          value={nombre}
+          onChange={(v) => { setNombre(v); setFieldErrors((p) => ({ ...p, nombre: "" })); }}
+          error={fieldErrors.nombre}
+        />
+        <Field
+          label="email"
+          type="email"
+          value={email}
+          onChange={(v) => { setEmail(v); setFieldErrors((p) => ({ ...p, email: "" })); }}
+          error={fieldErrors.email}
+        />
 
         {/* Phone with country selector */}
         <div style={{ marginBottom: 18 }}>
           <PhoneField
             telefono={telefono}
-            setTelefono={setTelefono}
+            setTelefono={(v) => { setTelefono(v); setFieldErrors((p) => ({ ...p, telefono: "" })); }}
             pais={pais}
             setPais={setPais}
+            error={fieldErrors.telefono}
           />
         </div>
 
@@ -403,12 +438,13 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
 // ─── Phone field (label + selector + input) ───────────────────────────────────
 
 function PhoneField({
-  telefono, setTelefono, pais, setPais,
+  telefono, setTelefono, pais, setPais, error,
 }: {
   telefono: string;
   setTelefono: (v: string) => void;
   pais: string;
   setPais: (v: string) => void;
+  error?: string;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -437,10 +473,12 @@ function PhoneField({
           value={telefono}
           onChange={(e) => setTelefono(e.target.value)}
           placeholder="000 000 000"
-          style={{ ...inputStyle, color: "#e0e0e0" }}
+          style={{ ...inputStyle, color: "#e0e0e0", borderBottomColor: error ? "#ff8c57" : "#333" }}
           autoComplete="off"
+          required
         />
       </div>
+      {error && <div style={fieldErrorStyle}>{error}</div>}
     </>
   );
 }
