@@ -49,17 +49,9 @@ export default function Home() {
         }}
       >
         <motion.p
-          animate={{
-            opacity: [0.2, 1, 1, 0.2],
-            textShadow: [
-              "0 0 0px rgba(255,255,255,0)",
-              "0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)",
-              "0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)",
-              "0 0 0px rgba(255,255,255,0)",
-            ],
-          }}
+          animate={{ opacity: [0.3, 1, 0.3] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          style={{ margin: 0 }}
+          style={{ margin: 0, color: "#ffffff" }}
         >
           © 2026 Mentita Studio
         </motion.p>
