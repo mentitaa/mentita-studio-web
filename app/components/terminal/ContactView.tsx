@@ -262,6 +262,7 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("botón hablemos clickeado");
     setLoading(true);
     try {
       const res = await fetch("/api/contact", {
@@ -275,7 +276,10 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
         }),
       });
       const data = await res.json();
+      console.log("API response:", data);
       if (data.ok) setSuccess(true);
+    } catch (err) {
+      console.error("fetch error:", err);
     } finally {
       setLoading(false);
     }

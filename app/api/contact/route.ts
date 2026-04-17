@@ -8,6 +8,7 @@ export async function POST(req: NextRequest) {
   try {
     const { nombre, email, telefono, pais } = await req.json();
 
+    console.log("API contact llamada");
     console.log("Contact API called", { nombre, email, telefono, pais });
 
     await notion.pages.create({
