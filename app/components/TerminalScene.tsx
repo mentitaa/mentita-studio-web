@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TerminalWindow from "./terminal/TerminalWindow";
 import TerminalContent from "./terminal/TerminalContent";
-import ContactForm from "./ContactForm";
+import ContactView from "./terminal/ContactView";
 
 // ─── Hacker text ─────────────────────────────────────────────────────────────
 
@@ -79,7 +79,7 @@ export default function TerminalScene() {
 
           {phase === "contact" && (
             <motion.div key="form" {...fade} transition={fast}>
-              <ContactForm onBack={handleBack} />
+              <ContactView onBack={handleBack} />
             </motion.div>
           )}
 
