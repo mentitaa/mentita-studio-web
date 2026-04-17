@@ -2,9 +2,8 @@
 
 import { motion } from "framer-motion";
 import TerminalTitleBar from "./TerminalTitleBar";
-import TerminalContent from "./TerminalContent";
 
-export default function TerminalWindow() {
+export default function TerminalWindow({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,8 +20,7 @@ export default function TerminalWindow() {
       }}
     >
       <TerminalTitleBar />
-
-      <TerminalContent />
+      {children}
     </motion.div>
   );
 }

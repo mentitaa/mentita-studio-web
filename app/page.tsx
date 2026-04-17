@@ -1,4 +1,4 @@
-import TerminalWindow from "./components/terminal/TerminalWindow";
+import TerminalScene from "./components/TerminalScene";
 
 export default function Home() {
   return (
@@ -19,9 +19,9 @@ export default function Home() {
         }}
       />
 
-      {/* Terminal */}
+      {/* Terminal + contact button */}
       <div style={{ position: "relative", zIndex: 10 }}>
-        <TerminalWindow />
+        <TerminalScene />
       </div>
 
       {/* Footer */}
