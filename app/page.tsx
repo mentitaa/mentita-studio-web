@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import TerminalScene from "./components/TerminalScene";
 
 export default function Home() {
@@ -45,7 +48,13 @@ export default function Home() {
           zIndex: 10,
         }}
       >
-        © 2026 Mentita Studio
+        <motion.p
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          style={{ margin: 0 }}
+        >
+          © 2026 Mentita Studio
+        </motion.p>
       </footer>
 
     </main>
