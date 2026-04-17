@@ -13,7 +13,7 @@ const projects = [
   {
     id: "anora",
     name: "Anora",
-    description: "E-commerce de ropa en Trujillo, Perú",
+    description: "E-commerce de ropa",
     emoji: "👗",
     links: {
       proyecto: "https://anorashop.vercel.app",
