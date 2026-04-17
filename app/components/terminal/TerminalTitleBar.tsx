@@ -84,7 +84,7 @@ export default function TerminalTitleBar() {
           userSelect: "none",
         }}
       >
-        Mentita Studio / Vibe coding projects
+        Mentita Studio/Vibe coding projects
       </span>
     </div>
   );

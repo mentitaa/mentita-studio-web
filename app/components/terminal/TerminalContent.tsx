@@ -8,7 +8,7 @@ type Item = { name: string; color: string; href: string; ext: string };
 const projects: { slug: string; label: string; items: Item[] }[] = [
   {
     slug: "treno",
-    label: "Treno /SaaS para gimnasios 💪",
+    label: "Treno/ SaaS para gimnasios 💪",
     items: [
       { name: "ver-proyecto", color: "#4a9eff", href: "https://treno-web-opal.vercel.app",              ext: ".web"    },
       { name: "ver-proceso",  color: "#ff5f57", href: "https://www.instagram.com/mentita.studio/",      ext: ".insta"  },
@@ -17,7 +17,7 @@ const projects: { slug: string; label: string; items: Item[] }[] = [
   },
   {
     slug: "anora",
-    label: "Anora /E-commerce de ropa 👗",
+    label: "Anora/ E-commerce de ropa 👗",
     items: [
       { name: "ver-proyecto", color: "#4a9eff", href: "https://anorashop.vercel.app",                  ext: ".web"    },
       { name: "ver-proceso",  color: "#ff5f57", href: "https://www.instagram.com/mentita.studio/",      ext: ".insta"  },
