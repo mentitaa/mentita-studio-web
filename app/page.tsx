@@ -4,19 +4,20 @@ export default function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center px-4">
 
-      {/* Background */}
+      {/* Background desktop */}
       <img
         src="/bgms.png"
         alt=""
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: 0,
-        }}
+        className="hidden md:block"
+        style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+      />
+
+      {/* Background mobile */}
+      <img
+        src="/bgms-mobile.png"
+        alt=""
+        className="block md:hidden"
+        style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
       />
 
       {/* Logo + terminal + contact button */}
