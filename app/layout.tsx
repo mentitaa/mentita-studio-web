@@ -22,6 +22,13 @@ export const metadata: Metadata = {
     siteName: "Mentita Studio",
     locale: "es_PE",
     type: "website",
+    images: [
+      {
+        url: "https://mentitastudio.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
     card: "summary",
