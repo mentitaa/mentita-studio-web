@@ -257,32 +257,45 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
   const [pais,     setPais]     = useState("PE");
   const [loading,  setLoading]  = useState(false);
   const [success,  setSuccess]  = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const selectedCountry = COUNTRIES.find((c) => c.code === pais)!;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const doSubmit = async () => {
     console.log("botón hablemos clickeado");
+    setApiError(null);
     setLoading(true);
     try {
+      const body = {
+        nombre,
+        email,
+        telefono: `${selectedCountry.dial} ${telefono}`,
+        pais: `${selectedCountry.flag} ${selectedCountry.name}`,
+      };
+      console.log("enviando:", body);
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre,
-          email,
-          telefono: `${selectedCountry.dial} ${telefono}`,
-          pais: `${selectedCountry.flag} ${selectedCountry.name}`,
-        }),
+        body: JSON.stringify(body),
       });
       const data = await res.json();
       console.log("API response:", data);
-      if (data.ok) setSuccess(true);
+      if (data.ok) {
+        setSuccess(true);
+      } else {
+        setApiError(data.error ?? "error desconocido");
+      }
     } catch (err) {
       console.error("fetch error:", err);
+      setApiError(String(err));
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    doSubmit();
   };
 
   return (
@@ -345,8 +358,15 @@ export default function ContactView({ onBack }: { onBack: () => void }) {
           />
         </div>
 
+        {apiError && (
+          <div style={{ color: "#ff5f57", fontSize: 11, fontFamily: "monospace", marginBottom: 8, wordBreak: "break-all" }}>
+            // error: {apiError}
+          </div>
+        )}
+
         <button
           type="submit"
+          onClick={doSubmit}
           disabled={loading}
           style={{
             width: "100%",
