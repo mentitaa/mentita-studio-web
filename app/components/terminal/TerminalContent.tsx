@@ -159,7 +159,7 @@ export default function TerminalContent() {
           <span style={{ color: "#28c840" }}>acceso concedido</span>
         </div>
         <span style={{ color: "#ffffff", fontWeight: 700, fontSize: 14 }}>
-          Feel the vibe<AnimatedDots />
+          Code the vibe<AnimatedDots />
         </span>
         <span style={{ color: "#555", fontSize: 12 }}>
           // abrir cada carpeta para acceder
