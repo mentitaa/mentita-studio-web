@@ -47,6 +47,8 @@ function CountrySelector({
   onChange: (code: string) => void;
 }) {
   const [open, setOpen] = useState(false);
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0 });
+  const btnRef = useRef<HTMLButtonElement>(null);
   const ref = useRef<HTMLDivElement>(null);
   const selected = COUNTRIES.find((c) => c.code === value)!;
 
@@ -60,11 +62,20 @@ function CountrySelector({
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const handleToggle = () => {
+    if (!open && btnRef.current) {
+      const rect = btnRef.current.getBoundingClientRect();
+      setDropdownPos({ top: rect.bottom + 4, left: rect.left });
+    }
+    setOpen((v) => !v);
+  };
+
   return (
     <div ref={ref} style={{ position: "relative", flexShrink: 0 }}>
       <button
+        ref={btnRef}
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={handleToggle}
         style={{
           background: "transparent",
           border: "none",
@@ -95,10 +106,10 @@ function CountrySelector({
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.15 }}
             style={{
-              position: "absolute",
-              top: "100%",
-              left: 0,
-              zIndex: 50,
+              position: "fixed",
+              top: dropdownPos.top,
+              left: dropdownPos.left,
+              zIndex: 9999,
               background: "#2a2a2c",
               border: "1px solid #333",
               borderRadius: 6,
