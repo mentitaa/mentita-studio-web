@@ -29,10 +29,6 @@ export const metadata: Metadata = {
     description: "Vibe coding studio. Proyectos web y SaaS hechos con Claude Code.",
   },
   metadataBase: new URL("https://mentitastudio.vercel.app"),
-  icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
-  },
 };
 
 export default function RootLayout({
