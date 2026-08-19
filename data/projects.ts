@@ -1,5 +1,16 @@
 const projects = [
   {
+    id: "cerovagos",
+    name: "Cero Vagos",
+    description: "Portal de empleos",
+    emoji: "💼",
+    links: {
+      proyecto: "https://cerovagos.com",
+      proceso: "https://www.instagram.com/mentita.studio/",
+      repo: "https://github.com/mentitaa/cero-vagos",
+    },
+  },
+  {
     id: "treno",
     name: "Treno",
     description: "SaaS para gimnasios",
