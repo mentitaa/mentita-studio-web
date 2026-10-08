@@ -169,7 +169,7 @@ export default function TerminalContent() {
         className="projects-scroll"
         style={{
           paddingInline: 20,
-          maxHeight: 230,
+          maxHeight: 250,
           overflowY: "auto",
         }}
       >
