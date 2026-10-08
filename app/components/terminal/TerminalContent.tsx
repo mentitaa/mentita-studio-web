@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import projectsData from "@/data/projects";
 
@@ -123,6 +123,32 @@ function FolderSection({
 }
 
 export default function TerminalContent() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [maxH, setMaxH] = useState<number | undefined>(undefined);
+
+  const measure = useCallback(() => {
+    const container = containerRef.current;
+    if (!container || container.children.length === 0) return;
+    const count = Math.min(2, container.children.length);
+    const last = container.children[count - 1] as HTMLElement;
+    setMaxH(last.offsetTop + last.offsetHeight);
+  }, []);
+
+  useEffect(() => {
+    measure();
+    const container = containerRef.current;
+    if (!container) return;
+    const ro = new ResizeObserver(measure);
+    for (let i = 0; i < Math.min(2, container.children.length); i++) {
+      ro.observe(container.children[i]);
+    }
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [measure]);
+
   return (
     <div style={{ fontFamily: "monospace", fontSize: 13 }}>
 
@@ -166,10 +192,11 @@ export default function TerminalContent() {
 
       {/* Projects section — scrolls internally */}
       <div
+        ref={containerRef}
         className="projects-scroll"
         style={{
           paddingInline: 20,
-          maxHeight: 250,
+          maxHeight: maxH,
           overflowY: "auto",
         }}
       >
