@@ -1,5 +1,16 @@
 const projects = [
   {
+    id: "claudia",
+    name: "Claudia",
+    description: "Asistente Virtual IA",
+    emoji: "🤖",
+    links: {
+      proyecto: "https://claudia.mentitastudio.com",
+      proceso: "https://www.instagram.com/claudia.asistente/",
+      repo: "https://github.com/mentitaa/Claud.ia",
+    },
+  },
+  {
     id: "cerovagos",
     name: "Cero Vagos",
     description: "Portal de empleos",
