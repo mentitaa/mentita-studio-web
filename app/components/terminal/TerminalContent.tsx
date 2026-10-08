@@ -126,7 +126,15 @@ export default function TerminalContent() {
   return (
     <div style={{ fontFamily: "monospace", fontSize: 13 }}>
 
-      {/* Header section */}
+      {/* Scrollbar styles */}
+      <style>{`
+        .projects-scroll::-webkit-scrollbar { width: 4px; }
+        .projects-scroll::-webkit-scrollbar-track { background: transparent; }
+        .projects-scroll::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
+        .projects-scroll { scrollbar-width: thin; scrollbar-color: #444 transparent; }
+      `}</style>
+
+      {/* Header section — fixed, never scrolls */}
       <div
         style={{
           padding: 20,
@@ -156,8 +164,15 @@ export default function TerminalContent() {
         </span>
       </div>
 
-      {/* Projects section */}
-      <div style={{ paddingInline: 20 }}>
+      {/* Projects section — scrolls internally */}
+      <div
+        className="projects-scroll"
+        style={{
+          paddingInline: 20,
+          maxHeight: 230,
+          overflowY: "auto",
+        }}
+      >
         {projects.map((p, i) => (
           <FolderSection
             key={p.slug}

@@ -5,7 +5,7 @@ import TerminalScene from "./components/TerminalScene";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4">
+    <main style={{ height: "100vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", boxSizing: "border-box" }}>
 
       {/* Background desktop */}
       <img
