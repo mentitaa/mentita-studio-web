@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Mentita Studio",
     description: "Vibe coding studio. Proyectos web y SaaS hechos con Claude Code.",
-    url: "https://mentitastudio.vercel.app",
+    url: "https://www.mentitastudio.com",
     siteName: "Mentita Studio",
     locale: "es_PE",
     type: "website",
     images: [
       {
-        url: "https://mentitastudio.vercel.app/og-image.png",
+        url: "https://www.mentitastudio.com/og-image.png",
         width: 1200,
         height: 630,
       },
@@ -36,7 +36,8 @@ export const metadata: Metadata = {
     title: "Mentita Studio",
     description: "Vibe coding studio. Proyectos web y SaaS hechos con Claude Code.",
   },
-  metadataBase: new URL("https://mentitastudio.vercel.app"),
+  metadataBase: new URL("https://www.mentitastudio.com"),
+  alternates: { canonical: "/" },
   icons: {
     shortcut: "/favicon.ico",
     icon: "/favicon.ico",
@@ -50,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>

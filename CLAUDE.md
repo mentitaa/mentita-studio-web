@@ -4,7 +4,7 @@
 
 ## Proyecto
 Web pública de Mentita Studio, un vibe coding studio unipersonal.
-Deploy: https://mentitastudio.vercel.app
+Deploy: https://www.mentitastudio.com (dominio principal; mentitastudio.vercel.app es solo la dirección interna de Vercel)
 Repo: https://github.com/mentitaa/mentita-studio-web
 
 ## Stack
